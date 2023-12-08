@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccirvemkrdos6"]
+
+[ext_resource type="Script" path="res://node_3d.gd" id="1_pyp5a"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c23t1"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_1kiwv"]
+sky_material = SubResource("ProceduralSkyMaterial_c23t1")
+
+[sub_resource type="Environment" id="Environment_xecm6"]
+background_mode = 2
+sky = SubResource("Sky_1kiwv")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_pyp5a")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xecm6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.394)
